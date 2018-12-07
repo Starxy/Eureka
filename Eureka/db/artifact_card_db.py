@@ -1,5 +1,6 @@
-import requests, redis
-import config
+import requests
+import redis
+from Eureka.utils.GetConfig import config
 
 r = redis.Redis(host=config.db_host, port=config.db_port, db=config.db_name)
 

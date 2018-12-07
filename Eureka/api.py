@@ -2,6 +2,7 @@ from flask import Flask, jsonify
 from Eureka.utils.decode import decode
 from Eureka.steam_market import market_price
 from Eureka.db import artifact_card_db
+from Eureka.utils.GetConfig import config
 
 app = Flask(__name__)
 
@@ -50,6 +51,6 @@ def code_to_deck(deck_code):
     deck_price["sum"] = sum_price
     return jsonify(deck_price)
 
-if __name__ == '__main__':
+def run():
     app.config['JSON_AS_ASCII'] = False
-    app.run(debug=True)
+    app.run(host=config.api_host(), port=config.api_port())
