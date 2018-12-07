@@ -1,7 +1,7 @@
-from flask import Flask,json,jsonify
-from decode import decode
-import artifact_card_db
-import market_price
+from flask import Flask, jsonify
+from Eureka.utils.decode import decode
+from Eureka.steam_market import market_price
+from Eureka.db import artifact_card_db
 
 app = Flask(__name__)
 
@@ -14,6 +14,8 @@ def index():
 @app.route("/code/<deck_code>")
 def code_to_deck(deck_code):
     deck_json = decode(deck_code)
+    if not deck_json:
+        return "Wrong Code"
     heros_price = []
     cards_price = []
     deck_price = {}
