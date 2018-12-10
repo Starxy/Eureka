@@ -20,10 +20,10 @@ class GetConfig(object):
         return self.config_file.get('db', 'name')
 
     def api_host(self):
-        return self.config_file.get('api', 'host')
+        return self.config_file.get('API', 'host')
 
     def api_port(self):
-        return self.config_file.get('api', 'port')
+        return self.config_file.get('API', 'port')
 
     def socks5_enable(self):
         return self.config_file.get('socks5', 'enable')
