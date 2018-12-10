@@ -1,7 +1,7 @@
 from flask import Flask, jsonify
 from Eureka.utils.decode import decode
 from Eureka.steam_market import market_price
-from Eureka.db import artifact_card_db
+from Eureka.db.artifact_card_db import CardDb
 from Eureka.utils.GetConfig import config
 
 app = Flask(__name__)
@@ -21,12 +21,13 @@ def code_to_deck(deck_code):
     cards_price = []
     deck_price = {}
     sum_price = 0
+    db = CardDb()
     for hero in deck_json["heroes"]:
         new_hero_info = {}
         id = hero["id"]
         new_hero_info["id"] = id
-        new_hero_info["name"] = artifact_card_db.get_card_name_by_card_id(id).decode("utf-8")
-        item_def = artifact_card_db.get_item_def_by_card_id(id)
+        new_hero_info["name"] = db.get_card_name_by_card_id(id).decode("utf-8")
+        item_def = db.get_item_def_by_card_id(id)
         if item_def:
             new_hero_info["single_price"] = market_price.get_market_current_lowest_price(item_def)
             sum_price = sum_price + float(new_hero_info["single_price"].strip("¥"))
@@ -38,8 +39,8 @@ def code_to_deck(deck_code):
         new_card_info = {}
         id = card["id"]
         new_card_info["id"] = id
-        new_card_info["name"] = artifact_card_db.get_card_name_by_card_id(id).decode("utf-8")
-        item_def = artifact_card_db.get_item_def_by_card_id(id)
+        new_card_info["name"] = db.get_card_name_by_card_id(id).decode("utf-8")
+        item_def = db.get_item_def_by_card_id(id)
         if item_def:
             new_card_info["single_price"] = market_price.get_market_current_lowest_price(item_def)
             sum_price = sum_price + float(new_card_info["single_price"].strip("¥")) * float(card["count"])

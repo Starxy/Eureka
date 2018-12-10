@@ -1,9 +1,10 @@
 import requests
 import redis
+from Eureka.utils.GetConfig import config
 
 
 class CardDb:
-    def __init__(self,host,port,name):
+    def __init__(self,host=config.db_host(),port=config.db_port(),name=config.db_name()):
         self.r = redis.Redis(host=host, port=port, db=name)
         self.version = ["00", "01"]
 
@@ -26,7 +27,7 @@ class CardDb:
                 self.set_card_hashs(card)
 
     def get_item_def_by_card_id(self, card_id):
-        return self.r.hget(self, card_id, 'item_def')
+        return self.r.hget(card_id, 'item_def')
 
     def get_card_name_by_card_id(self, card_id):
         return self.r.hget(card_id, 'card_name')
