@@ -1,6 +1,7 @@
-from Eureka.api import run
-from Eureka.db import artifact_card_db
+from Eureka.api import api_run
+from Eureka.db.artifact_card_db import CardDb
+from Eureka.utils.GetConfig import config
 
 if __name__ == '__main__':
-    artifact_card_db.init_cards_db()
-    run()
+    api_run()
+    db = CardDb(host=config.db_host(), port=config.db_port(), name=config.db_name())

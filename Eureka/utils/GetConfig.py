@@ -2,7 +2,7 @@ import os
 from configparser import ConfigParser
 
 
-class GetConfig:
+class GetConfig(object):
 
     def __init__(self):
         self.pwd = os.path.dirname(os.path.dirname(os.path.dirname(__file__)))
@@ -42,4 +42,4 @@ config = GetConfig()
 
 if __name__ == '__main__':
     gg = GetConfig()
-    print(gg.socks5_username())
+    print(int(gg.db_port()))

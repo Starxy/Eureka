@@ -51,6 +51,6 @@ def code_to_deck(deck_code):
     deck_price["sum"] = sum_price
     return jsonify(deck_price)
 
-def run():
+def api_run():
     app.config['JSON_AS_ASCII'] = False
     app.run(host=config.api_host(), port=config.api_port())
