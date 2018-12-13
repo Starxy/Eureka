@@ -1,3 +1,4 @@
 Flask==1.0.2
 redis==3.0.1
 requests[socks] == 2.20.1
+apscheduler == 3.5.3

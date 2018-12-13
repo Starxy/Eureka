@@ -1,4 +1,7 @@
-import signal
+import sys
+
+sys.path.append('.')
+
 from multiprocessing import Process
 from Eureka.Api.api import api_run as ApiRun
 from Eureka.Schedule.DeckInfoRefresh import run as RefreshRun
