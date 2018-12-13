@@ -1,9 +1,11 @@
-# Artifact 卡组价格插件
+# Artifact 卡组价格查询
 - [x] api 接口
 - [x] Steam商店价格获取
 - [ ] 本地 DeckCode 编码
+    - [x] 本地 DeckDecode 编码
+    - [ ] 本地 DeckEncode 编码
 - [ ] 缓存图片描述
-- [ ] 定期更新牌组信息
+- [x] 定期更新牌组信息
 - [ ] 前端
 
 # 使用
@@ -15,6 +17,11 @@ python3 Run.py
 # Api接口
 ```
 /code/<ArtifactDeckCode>
+```
+# 示例
+单机勿压
+```
+ddns.starxy.cc:5051/code/
 ```
 返回卡片单价和卡组总价
 
