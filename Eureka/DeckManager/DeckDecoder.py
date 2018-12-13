@@ -3,6 +3,9 @@ from functools import reduce
 
 
 class CArtifactDeckDecoder(object):
+    """
+    本地 DeckDecoder 解码
+    """
 
     def __init__(self):
         self.current_version = 2
@@ -93,7 +96,7 @@ class CardDecoder(object):
         self.previous_id = 0
 
 
-CArtifactDeckDecoder = CArtifactDeckDecoder()
+CADD = CArtifactDeckDecoder()
 if __name__ == "__main__":
     list = [
         "ADCJYsSJLkCgxhLC7hdQmTdAU6CipuiAWkBdgENsQGGYQPpu5HnuqLmiZPpkrEgLSBEb2c_",
@@ -101,5 +104,5 @@ if __name__ == "__main__":
         "ADCJSoYJLkCQwcRljpdpN0BiIEHiptqAoGBIwOWGn8BSOe6oum7keW-q+aUuyAtIFN0YW5DaWZrYQ__"
     ]
     for code in list:
-        ans = CArtifactDeckDecoder.parse_deck(code)
+        ans = CADD.parse_deck(code)
         print(ans)

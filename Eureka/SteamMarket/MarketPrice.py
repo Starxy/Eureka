@@ -1,5 +1,8 @@
 import requests
 from Eureka.Utils.SteamProxy import proxy
+from Eureka.Utils.LogHandle import LogHandler
+
+log = LogHandler("MarketPrice")
 
 
 def get_market_current_lowest_price(item_def, appid="583950", currency="23"):
@@ -17,9 +20,13 @@ def get_market_current_lowest_price(item_def, appid="583950", currency="23"):
         "market_hash_name": item_def,
         "currency": currency
     }
-    price_info = requests.get(url=url, params=post_data, proxies=proxies).json()
-    return price_info["lowest_price"]
+    try:
+        price_info = requests.get(url=url, params=post_data, proxies=proxies).json()
+        return price_info["lowest_price"]
+    except Exception as e:
+        log.error(e)
+        raise RuntimeError("Steam 商店请求暂时不可用")
 
 
 if __name__ == '__main__':
-    pass
+    print(get_market_current_lowest_price(110001))

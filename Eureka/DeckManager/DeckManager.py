@@ -22,12 +22,12 @@ class DeckManager(object):
     def get_card_name(self, card_id):
         return self.db.get_card_name(card_id)
 
-    def get_item_id(self, card_id):
+    def get_item_def(self, card_id):
         return self.db.get_item_def(card_id)
 
 
 if __name__ == '__main__':
     DeckManager = DeckManager()
-    #DeckManager.refresh()
+    # DeckManager.refresh()
     print(DeckManager.get_card_name(10002))
-    print(DeckManager.get_item_id(10002))
+    print(DeckManager.get_item_def(10002))
